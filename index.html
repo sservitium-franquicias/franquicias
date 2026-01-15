@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sservitium Franquicias - Los que se desmarcan</title>
+  <meta name="description" content="0€ royalties, sin stock ni inmovilizado y zona exclusiva. Solicita información y te confirmamos disponibilidad en 24–48h." />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand:#00B4C8;
+      --brand2:#0099B3;
+      --danger:#B4382E;
+      --bg:#f6f7f9;
+      --text:#222;
+      --muted:#666;
+      --card:#fff;
+      --shadow: 0 12px 35px rgba(0,0,0,.12);
+      --shadow2: 0 18px 55px rgba(0,0,0,.18);
+      --radius: 16px;
+      --radius2: 22px;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body{
+      font-family:'Open Sans',sans-serif;
+      line-height:1.6;
+      color:var(--text);
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      overflow-x:hidden;
+    }
+    .container{ max-width:1200px; margin:0 auto; padding:0 20px; }
+    a{ color:inherit; }
+
+    /* Header */
+    .header{
+      position:fixed; top:0; left:0; right:0;
+      background: rgba(0,0,0,.92);
+      backdrop-filter: blur(10px);
+      z-index:1000;
+      padding: 12px 0;
+      box-shadow: 0 2px 14px rgba(0,0,0,.30);
+    }
+    .header .container{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+    }
+    .logo{ height:58px; width:auto; }
+    .top-links{
+      display:flex; gap:16px; align-items:center;
+      font-size:14px; color: rgba(255,255,255,.80);
+    }
+    .top-links a{ text-decoration:none; opacity:.9; }
+    .top-links a:hover{ opacity:1; color:#fff; }
+    .top-cta{
+      border:none; cursor:pointer;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#fff;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: 0 10px 25px rgba(0,180,200,.25);
+    }
+
+    /* Floating CTA */
+    .floating-cta{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:1200;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:flex-end;
+    }
+    .floating-cta .mini-note{
+      background: rgba(0,0,0,.78);
+      color:#fff;
+      padding:10px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      max-width: 280px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+    }
+    .floating-cta .mini-note strong{ color: var(--brand); }
+    .cta-float-btn{
+      border:none;
+      cursor:pointer;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#fff;
+      padding: 14px 18px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:14px;
+      display:flex; align-items:center; gap:10px;
+      box-shadow: 0 14px 30px rgba(0,180,200,.35);
+      transition: transform .2s ease, filter .2s ease;
+    }
+    .cta-float-btn:hover{ transform: translateY(-2px); filter: brightness(1.03); }
+
+    /* Hero */
+    .hero{
+      min-height: 100vh;
+      padding-top: 92px;
+      padding-bottom: 54px;
+      display:flex;
+      align-items:center;
+      position:relative;
+      color:#fff;
+      background:
+        linear-gradient(rgba(0,0,0,.48), rgba(0,0,0,.74)),
+        url('https://lh3.googleusercontent.com/d/1xdiRmB--tHC8oS5N8Gtg_NThX076NtUh');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero::before{
+      content:'';
+      position:absolute; inset:0;
+      background: radial-gradient(circle at 22% 50%, rgba(0,180,200,.26), transparent 55%);
+      animation: pulse 3.2s ease-in-out infinite;
+    }
+    @keyframes pulse{ 0%,100%{opacity:.30} 50%{opacity:.62} }
+
+    .hero-inner{
+      position:relative; z-index:2;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .hero-left{
+      padding: 18px 0;
+    }
+    .kicker{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-bottom: 12px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      font-size: 12px;
+      font-weight: 800;
+      color: rgba(255,255,255,.90);
+      backdrop-filter: blur(6px);
+    }
+
+    h1{
+      font-family:'Montserrat',sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.8px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,.55);
+      margin-bottom: 10px;
+    }
+    .subtitle{
+      font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+      font-weight: 800;
+      color: var(--brand);
+      margin-bottom: 14px;
+    }
+    .hero-sub{
+      max-width: 60ch;
+      color: rgba(255,255,255,.90);
+      margin-bottom: 16px;
+      font-size: 15.5px;
+    }
+
+    .hero-bullets{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+      margin: 14px 0 18px;
+      max-width: 760px;
+    }
+    .hero-bullet{
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      padding: 12px 14px;
+      border-radius: 14px;
+      backdrop-filter: blur(6px);
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .tick{
+      width: 24px; height: 24px;
+      border-radius: 8px;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(0,180,200,.18);
+      border: 1px solid rgba(0,180,200,.35);
+      color: var(--brand);
+      flex: 0 0 auto;
+      margin-top: 1px;
+    }
+
+    .hero-ctas{
+      display:flex; gap:12px; flex-wrap:wrap;
+      align-items:center;
+      margin-top: 10px;
+    }
+    .cta-primary{
+      border:none; cursor:pointer;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#fff;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 15px;
+      box-shadow: 0 14px 30px rgba(0,180,200,.35);
+      transition: transform .2s ease, filter .2s ease;
+    }
+    .cta-primary:hover{ transform: translateY(-2px); filter: brightness(1.03); }
+    .cta-ghost{
+      border: 1px solid rgba(255,255,255,.20);
+      background: rgba(255,255,255,.06);
+      color:#fff;
+      padding: 13px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+      cursor:pointer;
+    }
+    .microtrust{
+      margin-top: 10px;
+      font-size: 12.5px;
+      color: rgba(255,255,255,.86);
+    }
+    .microtrust strong{ color: var(--brand); }
+
+    /* Hero right card */
+    .hero-card{
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: var(--radius2);
+      padding: 18px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 45px rgba(0,0,0,.20);
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+    }
+    .hero-card h3{
+      font-family:'Montserrat',sans-serif;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+    }
+    .hero-card p{ color: rgba(255,255,255,.88); font-size: 13.5px; }
+    .fit-list{
+      display:grid; gap:10px;
+      margin-top: 6px;
+    }
+    .fit-item{
+      display:flex; gap:10px; align-items:flex-start;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.14);
+    }
+    .fit-item strong{ color:#fff; }
+    .fit-item span{ color: rgba(255,255,255,.82); font-size: 13px; }
+
+    /* Generic sections */
+    .section{
+      padding: 86px 0;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all .8s ease;
+    }
+    .section.visible{ opacity:1; transform:translateY(0); }
+    .section-title{
+      font-family:'Montserrat',sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 900;
+      text-align:center;
+      margin-bottom: 14px;
+      letter-spacing:-0.5px;
+    }
+    .section-subtitle{
+      font-size: 1.12rem;
+      text-align:center;
+      margin: 0 auto 34px;
+      color: var(--muted);
+      max-width: 900px;
+    }
+
+    /* 3 steps */
+    .steps{ background: #fff; }
+    .steps-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 10px;
+    }
+    .step{
+      background: var(--card);
+      border-radius: var(--radius2);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      border-top: 5px solid var(--brand);
+      position: relative;
+      overflow:hidden;
+    }
+    .step::after{
+      content:'';
+      position:absolute;
+      right:-40px; top:-40px;
+      width:120px; height:120px;
+      background: rgba(0,180,200,.12);
+      border-radius: 50%;
+    }
+    .step .n{
+      font-family:'Montserrat',sans-serif;
+      font-weight: 900;
+      color: var(--brand);
+      font-size: 13px;
+      letter-spacing:.6px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .step h3{
+      font-family:'Montserrat',sans-serif;
+      font-weight: 900;
+      margin-bottom: 8px;
+      letter-spacing:-0.3px;
+    }
+    .step p{ color: var(--muted); }
+
+    /* Purpose (image + text) */
+    .purpose{ background: var(--bg); }
+    .purpose-content{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items:center;
+    }
+    .purpose-image{
+      width:100%;
+      height: 420px;
+      border-radius: var(--radius2);
+      overflow:hidden;
+      box-shadow: var(--shadow2);
+      position:relative;
+    }
+    .purpose-image img{ width:100%; height:100%; object-fit:cover; object-position:center; }
+    .purpose-image::before{
+      content:'';
+      position:absolute; inset:0;
+      background: linear-gradient(45deg, rgba(0,180,200,.14) 0%, transparent 55%);
+      opacity:.9;
+    }
+    .purpose-copy h2{
+      font-family:'Montserrat',sans-serif;
+      font-weight: 900;
+      letter-spacing:-0.4px;
+      margin-bottom: 10px;
+      font-size: 1.9rem;
+    }
+    .purpose-copy p{ color: var(--muted); font-size: 1.08rem; }
+
+    /* Comparison */
+    .compare{ background:#fff; }
+    .compare-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 10px;
+    }
+    .compare-card{
+      border-radius: var(--radius2);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid #eef1f3;
+      position: relative;
+      overflow:hidden;
+    }
+    .compare-card.bad{ background: #fafafa; }
+    .compare-card.good{
+      background: linear-gradient(135deg, rgba(0,180,200,.12), rgba(0,153,179,.08));
+      border: 1px solid rgba(0,180,200,.22);
+    }
+    .badge{
+      position:absolute; top:16px; right:16px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .3px;
+      background: rgba(0,0,0,.06);
+      color:#444;
+    }
+    .compare-card.good .badge{
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#fff;
+    }
+    .compare-card h3{
+      font-family:'Montserrat',sans-serif;
+      font-weight: 900;
+      margin-bottom: 8px;
+      letter-spacing:-0.3px;
+    }
+    .compare-card ul{
+      margin-top: 10px;
+      padding-left: 18px;
+      color: #555;
+    }
+    .compare-card li{ margin: 8px 0; }
+
+    /* Numbers */
+    .numbers{
+      background:
+        linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.82)),
+        url('https://lh3.googleusercontent.com/d/1lPOdYppCzeHoTk8yrVAUFNP1SqbpiTWA');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
+      text-align:center;
+      position: relative;
+    }
+    .numbers .section-title{ color:#fff; }
+    .numbers-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .number-item{
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius2);
+      padding: 22px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 18px 45px rgba(0,0,0,.18);
+    }
+    .number-value{
+      font-family:'Montserrat',sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--brand);
+      margin-bottom: 6px;
+    }
+    .number-label{ font-weight: 800; }
+    .numbers-quote{
+      margin-top: 18px;
+      font-style: italic;
+      color: rgba(255,255,255,.85);
+    }
+
+    /* Form section (in-page) */
+    .lead{ background: var(--bg); }
+    .lead-wrap{
+      max-width: 920px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+      padding: 26px;
+      border: 1px solid #eef1f3;
+    }
+    .lead-top{
+      display:flex;
+      justify-content:space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items:flex-start;
+      margin-bottom: 14px;
+    }
+    .lead-top h3{
+      font-family:'Montserrat',sans-serif;
+      font-weight: 900;
+      letter-spacing:-0.3px;
+      margin-bottom: 6px;
+      font-size: 1.4rem;
+    }
+    .lead-top p{ color: var(--muted); max-width: 60ch; }
+    .lead-tags{
+      display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end;
+    }
+    .tag{
+      background: rgba(0,180,200,.10);
+      border: 1px solid rgba(0,180,200,.25);
+      color: #12565f;
+      font-weight: 900;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    form{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .field{ display:flex; flex-direction:column; gap:7px; }
+    .field label{ font-weight: 900; font-size: 13px; color:#333; }
+    input, select, textarea{
+      padding: 12px 14px;
+      border: 2px solid #e9ecef;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: border-color .2s ease, box-shadow .2s ease;
+      font-family:'Open Sans',sans-serif;
+      outline:none;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px rgba(0,180,200,.12);
+    }
+    textarea{ min-height: 110px; resize: vertical; }
+    .full{ grid-column: 1 / -1; }
+
+    .consent{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      font-size: 13px;
+      color: #555;
+    }
+    .consent input{ width: 18px; height: 18px; margin-top: 2px; }
+    .consent a{ color: var(--brand2); text-decoration:none; font-weight: 900; }
+    .consent a:hover{ text-decoration: underline; }
+
+    .form-actions{
+      display:flex; gap: 12px; flex-wrap:wrap;
+      align-items:center;
+    }
+    .submit{
+      border:none; cursor:pointer;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#fff;
+      padding: 14px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 14px 30px rgba(0,180,200,.28);
+      transition: transform .2s ease, filter .2s ease;
+    }
+    .submit:hover{ transform: translateY(-2px); filter: brightness(1.03); }
+    .submit:disabled{ opacity: .65; cursor:not-allowed; transform:none; }
+
+    .alt-cta{
+      border: 2px solid rgba(0,180,200,.35);
+      background: rgba(0,180,200,.08);
+      color: #12565f;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-weight: 900;
+      cursor:pointer;
+    }
+
+    .form-msg{
+      display:none;
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-weight: 900;
+      margin-top: 10px;
+    }
+    .form-msg.ok{
+      display:block;
+      background: rgba(0,180,200,.10);
+      border: 1px solid rgba(0,180,200,.25);
+      color: #12565f;
+    }
+    .form-msg.err{
+      display:block;
+      background: rgba(180,56,46,.10);
+      border: 1px solid rgba(180,56,46,.25);
+      color: #7a1f18;
+    }
+    .privacy-note{
+      margin-top: 10px;
+      color: #666;
+      font-size: 12px;
+    }
+
+    /* FAQ */
+    .faq{ background:#fff; }
+    .faq-wrap{
+      max-width: 920px;
+      margin: 0 auto;
+      display:grid;
+      gap: 12px;
+    }
+    .faq-item{
+      background:#fff;
+      border: 1px solid #eef1f3;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .faq-q{
+      width:100%;
+      border:none;
+      background: transparent;
+      text-align:left;
+      padding: 16px 18px;
+      cursor:pointer;
+      font-weight: 900;
+      font-family:'Montserrat',sans-serif;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .faq-a{
+      padding: 0 18px 16px;
+      color: #555;
+      display:none;
+    }
+    .faq-a.open{ display:block; }
+
+    /* Footer */
+    .footer{
+      background:#333;
+      color:#fff;
+      padding: 44px 0;
+      text-align:center;
+      position:relative;
+    }
+    .footer::before{
+      content:'';
+      position:absolute; top:0; left:0; right:0; height:3px;
+      background: linear-gradient(90deg, transparent 0%, var(--brand) 50%, transparent 100%);
+    }
+    .footer-links{ margin-top: 18px; }
+    .footer-links a{ color:#ccc; text-decoration:none; margin: 0 12px; font-weight:700; }
+    .footer-links a:hover{ color: var(--brand); }
+
+    /* Modal (optional) - reuse for quick access */
+    .modal{
+      display:none;
+      position:fixed;
+      z-index:2000;
+      left:0; top:0;
+      width:100%; height:100%;
+      background-color: rgba(0,0,0,.82);
+      backdrop-filter: blur(5px);
+    }
+    .modal-content{
+      background:#fff;
+      margin: 2% auto;
+      padding: 28px;
+      border-radius: var(--radius2);
+      width: 92%;
+      max-width: 720px;
+      max-height: 90vh;
+      overflow-y:auto;
+      position:relative;
+      box-shadow: 0 24px 70px rgba(0,0,0,.35);
+    }
+    .close{
+      color:#aaa;
+      position:absolute;
+      right: 16px; top: 10px;
+      font-size: 30px;
+      font-weight: 900;
+      cursor:pointer;
+    }
+    .close:hover{ color: var(--brand); }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .top-links{ display:none; }
+      .hero-inner{ grid-template-columns: 1fr; }
+      .hero-bullets{ grid-template-columns: 1fr; }
+      .steps-grid{ grid-template-columns: 1fr; }
+      .purpose-content{ grid-template-columns: 1fr; }
+      .compare-grid{ grid-template-columns: 1fr; }
+      .numbers-grid{ grid-template-columns: 1fr; }
+      form{ grid-template-columns: 1fr; }
+      .floating-cta .mini-note{ display:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <img src="https://lh3.googleusercontent.com/d/1hst8AzJGnkakmDuloSK5ArsgiwoYJEGw" alt="Sservitium Logo" class="logo" onerror="this.style.display='none';">
+      <nav class="top-links" aria-label="Navegación">
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#comparativa">Comparativa</a>
+        <a href="#numeros">Números</a>
+        <a href="#faq">FAQ</a>
+        <a href="#lead">Contacto</a>
+      </nav>
+      <button class="top-cta cta-open" type="button">Solicitar info</button>
+    </div>
+  </header>
+
+  <!-- Floating CTA -->
+  <div class="floating-cta">
+    <div class="mini-note">📍 ¿Tu zona está libre? <strong>Te lo confirmamos en 24–48h</strong>.</div>
+    <button class="cta-float-btn cta-open" type="button">🎯 Solicitar información</button>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="kicker">
+            <span class="pill">0€ royalties</span>
+            <span class="pill">Sin stock</span>
+            <span class="pill">Zona exclusiva</span>
+            <span class="pill">Modelo probado</span>
+          </div>
+
+          <h1>No todos siguen el camino marcado.<br>Algunos nacieron para abrir el suyo propio.</h1>
+          <div class="subtitle">Sservitium Franquicias. Los que se desmarcan.</div>
+
+          <p class="hero-sub">
+            Un modelo diseñado para crecer con estructura, sin burocracia y con foco total en el cliente.
+            Si buscas independencia con respaldo real, esto es para ti.
+          </p>
+
+          <div class="hero-bullets">
+            <div class="hero-bullet"><span class="tick">✓</span><span><strong>0€ en royalties</strong> — lo que generas es para tu negocio.</span></div>
+            <div class="hero-bullet"><span class="tick">✓</span><span><strong>Sin stock ni inmovilizado</strong> — compras cuando ya has vendido.</span></div>
+            <div class="hero-bullet"><span class="tick">✓</span><span><strong>Exclusividad territorial</strong> — tu zona, tu oportunidad.</span></div>
+            <div class="hero-bullet"><span class="tick">✓</span><span><strong>Soporte integral</strong> — técnico + comercial continuo.</span></div>
+          </div>
+
+          <div class="hero-ctas">
+            <button class="cta-primary cta-open" type="button">🎯 Quiero info sobre mi zona</button>
+            <button class="cta-ghost" type="button" data-scroll="#como-funciona">Ver cómo funciona</button>
+          </div>
+
+          <div class="microtrust">Contacto directo con expansión · <strong>respuesta en 24–48h</strong> laborables.</div>
+        </div>
+
+        <aside class="hero-card" aria-label="Auto-calificación">
+          <h3>¿Encajas con el modelo?</h3>
+          <p>Si te ves aquí, estás más cerca de lo que crees.</p>
+          <div class="fit-list">
+            <div class="fit-item"><span class="tick">✓</span><span><strong>Actitud</strong><br/>Compromiso con el servicio y la excelencia.</span></div>
+            <div class="fit-item"><span class="tick">✓</span><span><strong>Ambición</strong><br/>Quieres construir algo propio con método.</span></div>
+            <div class="fit-item"><span class="tick">✓</span><span><strong>Visión</strong><br/>Piensas a largo plazo, no en “pelotazos”.</span></div>
+          </div>
+          <div class="microtrust" style="margin-top:6px;">👉 Si sí, pide info y te confirmamos disponibilidad de zona.</div>
+          <button class="cta-primary cta-open" type="button" style="margin-top:8px;">Solicitar información</button>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cómo funciona (3 pasos) -->
+  <section class="section steps" id="como-funciona">
+    <div class="container">
+      <h2 class="section-title">Cómo funciona (en 3 pasos)</h2>
+      <p class="section-subtitle">Reducimos dudas y aceleramos tu arranque. Esto es lo que pasa desde que nos contactas.</p>
+
+      <div class="steps-grid">
+        <div class="step">
+          <div class="n">Paso 1</div>
+          <h3>Solicitud + Validación de zona</h3>
+          <p>Nos dejas tus datos y revisamos si tu zona está disponible. Si encaja, agendamos una llamada.</p>
+        </div>
+        <div class="step">
+          <div class="n">Paso 2</div>
+          <h3>Reunión y encaje</h3>
+          <p>Analizamos tu perfil, objetivos y potencial local. Te explicamos el modelo con claridad (sin humo).</p>
+        </div>
+        <div class="step">
+          <div class="n">Paso 3</div>
+          <h3>Plan de arranque</h3>
+          <p>Definimos el plan operativo y comercial para que empieces con ventaja desde el primer día.</p>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top: 26px;">
+        <button class="cta-primary cta-open" type="button">🎯 Quiero validar mi zona</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Propósito -->
+  <section class="section purpose" id="proposito">
+    <div class="container">
+      <h2 class="section-title">No vendemos productos. Construimos confianza.</h2>
+      <p class="section-subtitle">La diferencia no es lo que vendes. Es cómo sirves. Y eso se traduce en negocio.</p>
+
+      <div class="purpose-content">
+        <div class="purpose-image">
+          <img src="https://lh3.googleusercontent.com/d/1o_yMbGpGsUl6xaD_R2qNmNztlZUWeyqG" alt="Sservitium - Construimos confianza" onerror="this.style.display='none';">
+        </div>
+        <div class="purpose-copy">
+          <h2>Una franquicia para profesionales que no se conforman</h2>
+          <p>
+            Si tu forma de trabajar es: precisión, honestidad, compromiso y mejora continua…
+            aquí tienes un modelo que te acompaña para crecer con estructura, sin perder tu autonomía.
+          </p>
+          <div style="margin-top: 14px;">
+            <button class="cta-primary cta-open" type="button">🎯 Solicitar información</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparativa -->
+  <section class="section compare" id="comparativa">
+    <div class="container">
+      <h2 class="section-title">Dos formas de empezar. Solo una te da ventaja.</h2>
+      <p class="section-subtitle">La comparación que el lead necesita para decidir sin dudas.</p>
+
+      <div class="compare-grid">
+        <div class="compare-card bad">
+          <div class="badge">Camino habitual</div>
+          <h3>Empiezas solo</h3>
+          <ul>
+            <li>Buscas proveedores y condiciones desde cero.</li>
+            <li>Aprendes a base de errores (caros).</li>
+            <li>Inmovilizas capital en stock.</li>
+            <li>No tienes soporte técnico/comercial estructurado.</li>
+            <li>Tu marketing depende de “probar suerte”.</li>
+          </ul>
+        </div>
+
+        <div class="compare-card good">
+          <div class="badge">Sservitium</div>
+          <h3>Empiezas con estructura</h3>
+          <ul>
+            <li><strong>0€ royalties</strong> (rentabilidad para ti).</li>
+            <li><strong>Sin stock</strong> (compras cuando ya vendes).</li>
+            <li><strong>Zona exclusiva</strong> (protección de territorio).</li>
+            <li>Soporte técnico + comercial continuo.</li>
+            <li>Herramientas y método para convertir oportunidades en ventas.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top: 26px;">
+        <button class="cta-primary cta-open" type="button">🎯 Quiero hablar de mi zona</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Números -->
+  <section class="section numbers" id="numeros">
+    <div class="container">
+      <h2 class="section-title">Inversión que se transforma en resultados</h2>
+      <p class="section-subtitle" style="color: rgba(255,255,255,.86);">Modelo pensado para reducir riesgo y acelerar retorno.</p>
+
+      <div class="numbers-grid">
+        <div class="number-item">
+          <div class="number-value">15K€</div>
+          <div class="number-label">Inversión inicial</div>
+        </div>
+        <div class="number-item">
+          <div class="number-value">&lt;1</div>
+          <div class="number-label">Año de retorno</div>
+        </div>
+        <div class="number-item">
+          <div class="number-value">+60K€</div>
+          <div class="number-label">Rentabilidad media anual</div>
+        </div>
+      </div>
+
+      <div class="numbers-quote">“No se trata solo de cifras. Se trata de construir un futuro profesional sólido y sostenible.”</div>
+    </div>
+  </section>
+
+  <!-- Lead form (en página) -->
+  <section class="section lead" id="lead">
+    <div class="container">
+      <h2 class="section-title">Solicita información y valida tu zona</h2>
+      <p class="section-subtitle">Te contactamos desde expansión. Sin spam. Sin intermediarios.</p>
+
+      <div class="lead-wrap">
+        <div class="lead-top">
+          <div>
+            <h3>Da el paso. Únete a los que se desmarcan.</h3>
+            <p>Completa el formulario y te confirmamos disponibilidad de zona + próximos pasos.</p>
+          </div>
+          <div class="lead-tags">
+            <span class="tag">0€ royalties</span>
+            <span class="tag">Sin stock</span>
+            <span class="tag">Zona exclusiva</span>
+            <span class="tag">Respuesta 24–48h</span>
+          </div>
+        </div>
+
+        <form id="leadForm" novalidate>
+          <div class="field">
+            <label for="name">Nombre completo *</label>
+            <input id="name" name="name" type="text" required placeholder="Ej. María López" />
+          </div>
+
+          <div class="field">
+            <label for="phone">Teléfono *</label>
+            <input id="phone" name="phone" type="tel" required placeholder="Ej. 600 000 000" />
+          </div>
+
+          <div class="field">
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" required placeholder="ejemplo@email.com" />
+          </div>
+
+          <div class="field">
+            <label for="zone">Provincia / Zona *</label>
+            <input id="zone" name="zone" type="text" required placeholder="Ej. Valencia / Alicante / Madrid..." />
+          </div>
+
+          <div class="field full">
+            <label for="profile">Perfil (opcional)</label>
+            <select id="profile" name="profile">
+              <option value="">Selecciona…</option>
+              <option value="taller">Taller / mecánica</option>
+              <option value="industria">Industria</option>
+              <option value="comercial">Perfil comercial</option>
+              <option value="emprendedor">Emprendedor/a</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="motivation">¿Qué te motiva a valorar esta oportunidad? (opcional)</label>
+            <textarea id="motivation" name="motivation" placeholder="Cuéntanos en 2-3 líneas tu situación y por qué te interesa."></textarea>
+          </div>
+
+          <div class="field full">
+            <label class="consent">
+              <input type="checkbox" id="consent" name="consent" required />
+              <span>Acepto la <a href="#privacidad" target="_blank" rel="noopener">política de privacidad</a> y el tratamiento de mis datos *</span>
+            </label>
+          </div>
+
+          <div class="field full form-actions">
+            <button class="submit" id="submitBtn" type="submit">🎯 Enviar solicitud</button>
+            <button class="alt-cta cta-open" type="button">Abrir formulario rápido</button>
+          </div>
+
+          <div id="msgOk" class="form-msg ok full">✅ ¡Solicitud recibida! Te contactaremos en breve (24–48h laborables).</div>
+          <div id="msgErr" class="form-msg err full">⚠️ Revisa los campos obligatorios e inténtalo de nuevo.</div>
+
+          <div class="privacy-note full">
+            🔒 Tus datos se usan solo para contactarte sobre la franquicia. Email de destino: <strong>franquicias@sservitium.com</strong>.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <h2 class="section-title">Preguntas frecuentes</h2>
+      <p class="section-subtitle">Resolvemos las objeciones típicas antes de que aparezcan.</p>
+
+      <div class="faq-wrap">
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            ¿De verdad no hay royalties?
+            <span>+</span>
+          </button>
+          <div class="faq-a">Correcto: el modelo está planteado para que la rentabilidad se quede en tu negocio. La relación es de colaboración y soporte operativo/comercial.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            ¿Necesito almacén o stock?
+            <span>+</span>
+          </button>
+          <div class="faq-a">No. Trabajas con un enfoque de “sin stock”: compras cuando ya has vendido. Esto reduce riesgo y capital inmovilizado.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            ¿Qué incluye el soporte?
+            <span>+</span>
+          </button>
+          <div class="faq-a">Soporte técnico y comercial, herramientas y metodología para ayudarte a operar y crecer con un modelo probado.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            ¿Cuánto tardáis en responder?
+            <span>+</span>
+          </button>
+          <div class="faq-a">Normalmente en 24–48h laborables. Si la zona encaja y está disponible, se agenda llamada con expansión.</div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top: 26px;">
+        <button class="cta-primary cta-open" type="button">🎯 Solicitar información</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div style="font-size:1.4rem;font-weight:900;font-family:'Montserrat',sans-serif;margin-bottom:10px;">Sservitium Franquicias</div>
+      <div>Los que se desmarcan</div>
+      <div class="footer-links">
+        <a href="#aviso-legal">Aviso legal</a>
+        <a href="#privacidad">Política de privacidad</a>
+        <a href="#cookies">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal quick form (opcional) -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-label="Formulario rápido">
+      <span class="close" id="closeModal" aria-label="Cerrar">&times;</span>
+      <h2 style="font-family:'Montserrat',sans-serif;font-weight:900;letter-spacing:-0.4px;">Formulario rápido</h2>
+      <p style="color:#666;margin-bottom:12px;">Te lleva al formulario principal para enviar tu solicitud.</p>
+      <button class="cta-primary" type="button" data-scroll="#lead">Ir al formulario</button>
+    </div>
+  </div>
+
+  <script>
+    // ====== CONFIG: pega aquí tu URL de Google Apps Script (Web App) ======
+    const WEB_APP_URL = "PEGA_AQUI_TU_URL_DE_APPS_SCRIPT";
+    // =====================================================================
+
+    // Smooth scroll helper
+    function scrollToSelector(sel){
+      const el = document.querySelector(sel);
+      if(!el) return;
+      el.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    // Top / ghost buttons scroll
+    document.querySelectorAll('[data-scroll]').forEach(btn=>{
+      btn.addEventListener('click', ()=> scrollToSelector(btn.getAttribute('data-scroll')));
+    });
+
+    // Intersection Observer animations
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, {threshold: 0.12, rootMargin:'0px 0px -60px 0px'});
+
+    document.querySelectorAll('.section').forEach(s=> observer.observe(s));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item=>{
+      const q = item.querySelector('.faq-q');
+      const a = item.querySelector('.faq-a');
+      const sign = q.querySelector('span');
+      q.addEventListener('click', ()=>{
+        const open = a.classList.toggle('open');
+        sign.textContent = open ? '–' : '+';
+      });
+    });
+
+    // Modal quick
+    const modal = document.getElementById('modal');
+    const closeModal = document.getElementById('closeModal');
+    document.querySelectorAll('.cta-open').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        modal.style.display='block';
+        modal.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+      });
+    });
+    closeModal.addEventListener('click', ()=>{
+      modal.style.display='none';
+      modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow='auto';
+    });
+    window.addEventListener('click', (e)=>{
+      if(e.target === modal){
+        modal.style.display='none';
+        modal.setAttribute('aria-hidden','true');
+        document.body.style.overflow='auto';
+      }
+    });
+    document.addEventListener('keydown', (e)=>{
+      if(e.key==='Escape' && modal.style.display==='block'){
+        modal.style.display='none';
+        modal.setAttribute('aria-hidden','true');
+        document.body.style.overflow='auto';
+      }
+    });
+
+    // UTM capture
+    function getUTM(){
+      const p = new URLSearchParams(window.location.search);
+      return {
+        utm_source: p.get('utm_source') || '',
+        utm_medium: p.get('utm_medium') || '',
+        utm_campaign: p.get('utm_campaign') || '',
+        utm_content: p.get('utm_content') || '',
+        utm_term: p.get('utm_term') || ''
+      };
+    }
+
+    function isEmail(v){
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v||'').trim());
+    }
+    function cleanPhone(v){
+      return String(v||'').replace(/[^\d+]/g,'').trim();
+    }
+
+    // Lead form submit => Apps Script
+    const form = document.getElementById('leadForm');
+    const msgOk = document.getElementById('msgOk');
+    const msgErr = document.getElementById('msgErr');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      msgOk.style.display='none';
+      msgErr.style.display='none';
+
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      // required fields
+      const name = (data.name || '').trim();
+      const phone = cleanPhone(data.phone);
+      const email = (data.email || '').trim();
+      const zone = (data.zone || '').trim();
+      const consent = !!data.consent;
+
+      if(name.length < 3 || phone.length < 9 || !isEmail(email) || zone.length < 2 || !consent){
+        msgErr.style.display='block';
+        return;
+      }
+
+      if(!WEB_APP_URL || WEB_APP_URL.includes('PEGA_AQUI')){
+        msgErr.style.display='block';
+        msgErr.textContent = "⚠️ Falta configurar WEB_APP_URL (Apps Script).";
+        return;
+      }
+
+      const payload = {
+        name,
+        phone,
+        email,
+        zone,
+        motivation: (data.motivation || '').trim(),
+        profile: (data.profile || '').trim(),
+        source: "Landing Franquicias PRO",
+        userAgent: navigator.userAgent,
+        ...getUTM()
+      };
+
+      const original = submitBtn.textContent;
+      submitBtn.textContent = "Enviando…";
+      submitBtn.disabled = true;
+
+      try{
+        const res = await fetch(WEB_APP_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+
+        const out = await res.json().catch(()=> ({}));
+
+        if(out && out.ok){
+          msgOk.style.display='block';
+          form.reset();
+        } else {
+          msgErr.style.display='block';
+        }
+      }catch(err){
+        msgErr.style.display='block';
+      }finally{
+        submitBtn.textContent = original;
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
