@@ -99,7 +99,7 @@
     }
     .cta-float-btn:hover{ transform: translateY(-2px); filter: brightness(1.03); }
 
-    /* Hero (sin formulario pisando imagen) */
+    /* Hero */
     .hero{
       min-height: 100vh;
       padding-top: 92px;
@@ -224,6 +224,8 @@
       font-size: 15px;
       box-shadow: 0 14px 30px rgba(0,180,200,.35);
       transition: transform .2s ease, filter .2s ease;
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
     }
     .cta-primary:hover{ transform: translateY(-2px); filter: brightness(1.03); }
     .cta-ghost{
@@ -242,7 +244,6 @@
     }
     .microtrust strong{ color: var(--brand); }
 
-    /* Hero right card: solo auto-calificación (sin formulario) */
     .hero-card{
       background: rgba(255,255,255,.10);
       border: 1px solid rgba(255,255,255,.18);
@@ -283,7 +284,6 @@
     }
     .proof-mini strong{ color: var(--brand); }
 
-    /* Generic sections */
     .section{
       padding: 86px 0;
       opacity: 0;
@@ -307,7 +307,6 @@
       max-width: 900px;
     }
 
-    /* 3 steps */
     .steps{ background: #fff; }
     .steps-grid{
       display:grid;
@@ -349,7 +348,6 @@
     }
     .step p{ color: var(--muted); }
 
-    /* Purpose */
     .purpose{ background: var(--bg); }
     .purpose-content{
       display:grid;
@@ -381,7 +379,6 @@
     }
     .purpose-copy p{ color: var(--muted); font-size: 1.08rem; }
 
-    /* Comparison */
     .compare{ background:#fff; }
     .compare-grid{
       display:grid;
@@ -429,7 +426,6 @@
     }
     .compare-card li{ margin: 8px 0; }
 
-    /* Numbers */
     .numbers{
       background:
         linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.84)),
@@ -478,7 +474,6 @@
       color: rgba(255,255,255,.80);
     }
 
-    /* Lead section (con imagen lateral) */
     .lead{ background: var(--bg); }
     .lead-shell{
       display:grid;
@@ -593,6 +588,7 @@
       display:flex; gap: 12px; flex-wrap:wrap;
       align-items:center;
     }
+
     .submit{
       border:none; cursor:pointer;
       background: linear-gradient(135deg, var(--brand), var(--brand2));
@@ -602,9 +598,23 @@
       font-weight: 900;
       box-shadow: 0 14px 30px rgba(0,180,200,.28);
       transition: transform .2s ease, filter .2s ease;
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      min-width: 220px;
     }
     .submit:hover{ transform: translateY(-2px); filter: brightness(1.03); }
     .submit:disabled{ opacity: .65; cursor:not-allowed; transform:none; }
+
+    .spinner{
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,.35);
+      border-top-color: rgba(255,255,255,.95);
+      border-radius: 50%;
+      display:none;
+      animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     .form-msg{
       display:none;
@@ -631,7 +641,6 @@
       font-size: 12px;
     }
 
-    /* FAQ */
     .faq{ background:#fff; }
     .faq-wrap{
       max-width: 920px;
@@ -667,7 +676,6 @@
     }
     .faq-a.open{ display:block; }
 
-    /* Footer */
     .footer{
       background:#333;
       color:#fff;
@@ -684,7 +692,6 @@
     .footer-links a{ color:#ccc; text-decoration:none; margin: 0 12px; font-weight:700; }
     .footer-links a:hover{ color: var(--brand); }
 
-    /* Responsive */
     @media (max-width: 980px){
       .top-links{ display:none; }
       .hero-inner{ grid-template-columns: 1fr; }
@@ -702,7 +709,6 @@
 </head>
 
 <body>
-  <!-- Header -->
   <header class="header">
     <div class="container">
       <img src="/assets/img/logo.png" alt="Sservitium Logo" class="logo" onerror="this.style.display='none';">
@@ -717,13 +723,11 @@
     </div>
   </header>
 
-  <!-- Floating CTA -->
   <div class="floating-cta">
     <div class="mini-note">📍 ¿Tu zona está libre? <strong>Te lo confirmamos en 24–48h</strong>.</div>
     <button class="cta-float-btn" type="button" data-scroll="#lead">🎯 Solicitar información</button>
   </div>
 
-  <!-- Hero -->
   <section class="hero" id="inicio">
     <div class="container">
       <div class="hero-inner">
@@ -738,7 +742,6 @@
           <h1>No todos siguen el camino marcado.<br>Algunos nacieron para abrir el suyo propio.</h1>
           <div class="subtitle">Sservitium Franquicias. Los que se desmarcan.</div>
 
-          <!-- Línea de claridad (neuro) -->
           <div class="clarity">
             Abre tu delegación en tu provincia: ventas B2B con soporte técnico + comercial, sin stock y sin royalties.
           </div>
@@ -763,7 +766,6 @@
           <div class="microtrust">Contacto directo con expansión · <strong>respuesta en 24–48h</strong> laborables.</div>
         </div>
 
-        <!-- Auto-calificación (sin formulario) -->
         <aside class="hero-card" aria-label="Auto-calificación">
           <h3>¿Encajas con el modelo?</h3>
           <p>Si te ves aquí, estás más cerca de lo que crees.</p>
@@ -783,133 +785,15 @@
     </div>
   </section>
 
-  <!-- Cómo funciona -->
-  <section class="section steps" id="como-funciona">
-    <div class="container">
-      <h2 class="section-title">Cómo funciona (en 3 pasos)</h2>
-      <p class="section-subtitle">Reducimos dudas y aceleramos tu arranque. Esto es lo que pasa desde que nos contactas.</p>
+  <!-- (El resto de secciones las dejas igual que tu versión) -->
+  <!-- ... -->
 
-      <div class="steps-grid">
-        <div class="step">
-          <div class="n">Paso 1</div>
-          <h3>Solicitud + Validación de zona</h3>
-          <p>Nos dejas tus datos y revisamos si tu zona está disponible. Si encaja, agendamos una llamada.</p>
-        </div>
-        <div class="step">
-          <div class="n">Paso 2</div>
-          <h3>Reunión y encaje</h3>
-          <p>Analizamos tu perfil y potencial local. Te explicamos el modelo con claridad (sin humo).</p>
-        </div>
-        <div class="step">
-          <div class="n">Paso 3</div>
-          <h3>Plan de arranque</h3>
-          <p>Te llevas un plan operativo + comercial para empezar con ventaja desde el primer día.</p>
-        </div>
-      </div>
-
-      <div style="text-align:center; margin-top: 26px;">
-        <button class="cta-primary" type="button" data-scroll="#lead">🎯 Quiero validar mi zona</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Propósito -->
-  <section class="section purpose" id="proposito">
-    <div class="container">
-      <h2 class="section-title">No vendemos productos. Construimos confianza.</h2>
-      <p class="section-subtitle">La diferencia no es lo que vendes. Es cómo sirves. Y eso se traduce en negocio.</p>
-
-      <div class="purpose-content">
-        <div class="purpose-image">
-          <!-- Aquí pondrás la imagen “mecánico en motor” o similar -->
-          <img src="/assets/img/purpose.jpg" alt="Sservitium - Trabajo real y confianza" onerror="this.style.display='none';">
-        </div>
-        <div class="purpose-copy">
-          <h2>Una franquicia para profesionales que no se conforman</h2>
-          <p>
-            Si tu forma de trabajar es: precisión, honestidad, compromiso y mejora continua…
-            aquí tienes un modelo que te acompaña para crecer con estructura, sin perder tu autonomía.
-          </p>
-          <div style="margin-top: 14px;">
-            <button class="cta-primary" type="button" data-scroll="#lead">🎯 Solicitar información</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Comparativa -->
-  <section class="section compare" id="comparativa">
-    <div class="container">
-      <h2 class="section-title">Dos formas de empezar. Solo una te da ventaja.</h2>
-      <p class="section-subtitle">La comparación que el lead necesita para decidir sin dudas.</p>
-
-      <div class="compare-grid">
-        <div class="compare-card bad">
-          <div class="badge">Camino habitual</div>
-          <h3>Empiezas solo</h3>
-          <ul>
-            <li>Buscas proveedores y condiciones desde cero.</li>
-            <li>Aprendes a base de errores (caros).</li>
-            <li>Inmovilizas capital en stock.</li>
-            <li>No tienes soporte técnico/comercial estructurado.</li>
-            <li>Tu marketing depende de “probar suerte”.</li>
-          </ul>
-        </div>
-
-        <div class="compare-card good">
-          <div class="badge">Sservitium</div>
-          <h3>Empiezas con estructura</h3>
-          <ul>
-            <li><strong>0€ royalties</strong> (rentabilidad para ti).</li>
-            <li><strong>Sin stock</strong> (compras cuando ya vendes).</li>
-            <li><strong>Zona exclusiva</strong> (protección de territorio).</li>
-            <li>Soporte técnico + comercial continuo.</li>
-            <li>Herramientas y método para convertir oportunidades en ventas.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div style="text-align:center; margin-top: 26px;">
-        <button class="cta-primary" type="button" data-scroll="#lead">🎯 Quiero hablar de mi zona</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Números -->
-  <section class="section numbers" id="numeros">
-    <div class="container">
-      <h2 class="section-title">Inversión que se transforma en resultados</h2>
-      <p class="section-subtitle" style="color: rgba(255,255,255,.86);">Modelo pensado para reducir riesgo y acelerar retorno.</p>
-
-      <div class="numbers-grid">
-        <div class="number-item">
-          <div class="number-value">15K€</div>
-          <div class="number-label">Inversión inicial (orientativa)</div>
-        </div>
-        <div class="number-item">
-          <div class="number-value">&lt;1</div>
-          <div class="number-label">Año de retorno (según ejecución)</div>
-        </div>
-        <div class="number-item">
-          <div class="number-value">40–70K€</div>
-          <div class="number-label">Objetivo anual (según zona)</div>
-        </div>
-      </div>
-
-      <div class="numbers-quote">“No se trata solo de cifras. Se trata de construir un futuro profesional sólido y sostenible.”</div>
-      <div class="numbers-note">*Los resultados dependen de la zona, dedicación y ejecución comercial.</div>
-    </div>
-  </section>
-
-  <!-- Lead form (sección propia + imagen lateral) -->
   <section class="section lead" id="lead">
     <div class="container">
       <h2 class="section-title">Solicita información y valida tu zona</h2>
       <p class="section-subtitle">Te contactamos desde expansión. Sin spam. Sin intermediarios.</p>
 
       <div class="lead-shell">
-        <!-- Imagen lateral (cliente + comercial con tablet) -->
         <div class="lead-visual" aria-label="Imagen de trabajo real">
           <img src="/assets/img/form-side.jpg" alt="Comercial con cliente - Sservitium" onerror="this.style.display='none';">
           <div class="lead-visual-copy">
@@ -952,7 +836,6 @@
               <input id="zone" name="zone" type="text" required placeholder="Ej. Valencia / Alicante / Madrid..." />
             </div>
 
-            <!-- Calificación inteligente (mejora conversión/lead quality) -->
             <div class="field">
               <label for="capital">Capital disponible (aprox.) *</label>
               <select id="capital" name="capital" required>
@@ -1001,7 +884,10 @@
             </div>
 
             <div class="field full form-actions">
-              <button class="submit" id="submitBtn" type="submit">🎯 Enviar solicitud</button>
+              <button class="submit" id="submitBtn" type="submit">
+                <span class="spinner" id="btnSpinner" aria-hidden="true"></span>
+                <span id="btnText">🎯 Enviar solicitud</span>
+              </button>
             </div>
 
             <div id="msgOk" class="form-msg ok full">✅ ¡Solicitud recibida! Te contactaremos en breve (24–48h laborables).</div>
@@ -1016,106 +902,6 @@
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="section faq" id="faq">
-    <div class="container">
-      <h2 class="section-title">Preguntas frecuentes</h2>
-      <p class="section-subtitle">Resolvemos objeciones antes de que aparezcan.</p>
-
-      <div class="faq-wrap">
-        <div class="faq-item">
-          <button class="faq-q" type="button">
-            ¿De verdad no hay royalties?
-            <span>+</span>
-          </button>
-          <div class="faq-a">Correcto: el modelo está planteado para que la rentabilidad se quede en tu negocio.</div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" type="button">
-            ¿Necesito almacén o stock?
-            <span>+</span>
-          </button>
-          <div class="faq-a">No. Trabajas con un enfoque de “sin stock”: compras cuando ya has vendido.</div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" type="button">
-            ¿Qué incluye el soporte?
-            <span>+</span>
-          </button>
-          <div class="faq-a">Soporte técnico y comercial, herramientas y metodología para ayudarte a operar y crecer con un modelo probado.</div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" type="button">
-            ¿Qué pasa si mi zona no está disponible?
-            <span>+</span>
-          </button>
-          <div class="faq-a">Te proponemos alternativas cercanas o te incorporamos a lista de interés para próximas aperturas.</div>
-        </div>
-      </div>
-
-      <div style="text-align:center; margin-top: 26px;">
-        <button class="cta-primary" type="button" data-scroll="#lead">🎯 Solicitar información</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Política de privacidad -->
-  <section class="section" id="privacidad" style="background:#fff;">
-    <div class="container">
-      <h2 class="section-title">Política de privacidad</h2>
-
-      <div style="max-width:900px;margin:0 auto;color:#555;line-height:1.7;font-size:15px;">
-        <p><strong>Responsable del tratamiento:</strong> Sservitium<br>
-        <strong>Email de contacto:</strong> franquicias@sservitium.com</p>
-
-        <p><strong>Finalidad:</strong> gestionar la solicitud de información sobre el modelo de franquicia Sservitium y contactar contigo por medios electrónicos o telefónicos para atender tu petición.</p>
-
-        <p><strong>Datos tratados:</strong> nombre, teléfono, email, provincia/zona e información adicional que facilites voluntariamente.</p>
-
-        <p><strong>Legitimación:</strong> tu consentimiento, otorgado al marcar la casilla de aceptación antes de enviar el formulario.</p>
-
-        <p><strong>Destinatarios:</strong> no se cederán datos a terceros salvo obligación legal. Los datos podrán almacenarse y gestionarse mediante herramientas de Google (Google Sheets) bajo sus garantías de cumplimiento del RGPD.</p>
-
-        <p><strong>Conservación:</strong> los datos se conservarán durante el tiempo necesario para gestionar tu solicitud y, posteriormente, durante los plazos legalmente exigidos o hasta que solicites su supresión.</p>
-
-        <p><strong>Derechos:</strong> puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a <strong>franquicias@sservitium.com</strong>.</p>
-
-        <p><strong>Cambios:</strong> Sservitium puede actualizar esta política para adaptarla a cambios legales o técnicos.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Aviso legal -->
-  <section class="section" id="aviso-legal" style="background:#fff;">
-    <div class="container">
-      <h2 class="section-title">Aviso legal</h2>
-
-      <div style="max-width:900px;margin:0 auto;color:#555;line-height:1.7;font-size:15px;">
-        <p><strong>Titular del sitio web:</strong> Sservitium</p>
-        <p><strong>Objeto:</strong> facilitar información sobre el modelo de franquicia Sservitium y permitir el contacto con personas interesadas.</p>
-        <p><strong>Propiedad intelectual e industrial:</strong> contenidos titularidad de Sservitium o terceros autorizados.</p>
-        <p><strong>Responsabilidad:</strong> no se responsabiliza del mal uso de los contenidos del sitio web.</p>
-        <p><strong>Legislación aplicable:</strong> normativa española vigente.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Cookies -->
-  <section class="section" id="cookies" style="background:#fff;">
-    <div class="container">
-      <h2 class="section-title">Política de cookies</h2>
-
-      <div style="max-width:900px;margin:0 auto;color:#555;line-height:1.7;font-size:15px;">
-        <p><strong>Uso de cookies:</strong> este sitio web no utiliza cookies propias ni de terceros con fines publicitarios o de analítica.</p>
-        <p>Si en el futuro se incorporan cookies (por ejemplo, de analítica o publicidad), se informará y, cuando sea necesario, se solicitará consentimiento.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div style="font-size:1.4rem;font-weight:900;font-family:'Montserrat',sans-serif;margin-bottom:10px;">Sservitium Franquicias</div>
@@ -1130,20 +916,44 @@
 
   <script>
     // =========================
-    // CONFIG: endpoint (Google Apps Script / API)
+    // CONFIG: Google Apps Script Web App (PRODUCCIÓN)
     // =========================
-    // 1) Si usas Google Apps Script (Web App), pega aquí la URL:
-    // const WEB_APP_URL = "https://script.google.com/macros/s/XXXX/exec";
-    // 2) Si aún no tienes endpoint, déjalo vacío: el form no enviará, pero validará.
-    const WEB_APP_URL = "";
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzS2ngHe7TivBUGolLASR0fFhaOx1yyReaSJron7ggzuhkQjXaYaZ5G195OxdFP3ZAO/exec";
+    const SOURCE_LABEL = "Landing Franquicias PRO";
 
-    // =========================
     // Helpers
-    // =========================
     function smoothScrollTo(selector){
       const el = document.querySelector(selector);
       if(!el) return;
       el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function getUtmParams(){
+      const p = new URLSearchParams(window.location.search);
+      const utm = {
+        utm_source: p.get("utm_source") || "",
+        utm_medium: p.get("utm_medium") || "",
+        utm_campaign: p.get("utm_campaign") || "",
+        utm_content: p.get("utm_content") || "",
+        utm_term: p.get("utm_term") || ""
+      };
+      return utm;
+    }
+
+    function showMsg(ok){
+      const msgOk = document.getElementById("msgOk");
+      const msgErr = document.getElementById("msgErr");
+      msgOk.style.display = ok ? "block" : "none";
+      msgErr.style.display = ok ? "none" : "block";
+    }
+
+    function setLoading(isLoading){
+      const btn = document.getElementById("submitBtn");
+      const sp = document.getElementById("btnSpinner");
+      const tx = document.getElementById("btnText");
+      btn.disabled = isLoading;
+      sp.style.display = isLoading ? "inline-block" : "none";
+      tx.textContent = isLoading ? "Enviando..." : "🎯 Enviar solicitud";
     }
 
     // Scroll handlers (buttons with data-scroll)
@@ -1176,65 +986,60 @@
 
     // Form submission
     const form = document.getElementById("leadForm");
-    const msgOk = document.getElementById("msgOk");
-    const msgErr = document.getElementById("msgErr");
-    const submitBtn = document.getElementById("submitBtn");
-
-    function setMsg(ok){
-      msgOk.style.display = ok ? "block" : "none";
-      msgErr.style.display = ok ? "none" : "block";
-    }
-
-    function validateForm(){
-      // HTML5 validation
-      const valid = form.checkValidity();
-      if(!valid){
-        form.reportValidity();
-        return false;
-      }
-      return true;
-    }
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      msgOk.style.display = "none";
-      msgErr.style.display = "none";
+      showMsg(false); // ocultamos mensajes previos
 
-      if(!validateForm()){
-        setMsg(false);
+      // Validación HTML5
+      if(!form.checkValidity()){
+        form.reportValidity();
+        showMsg(false);
         return;
       }
 
-      // Si no hay endpoint, mostramos ok localmente (modo demo)
-      if(!WEB_APP_URL){
-        setMsg(true);
-        form.reset();
-        return;
-      }
-
-      submitBtn.disabled = true;
+      setLoading(true);
 
       try{
         const formData = new FormData(form);
         const payload = Object.fromEntries(formData.entries());
 
+        // Campos extra (para no perder la info aunque tu Sheet no tenga columna aún)
+        payload.extra_capital = payload.capital || "";
+        payload.extra_availability = payload.availability || "";
+
+        // Tracking / contexto
+        Object.assign(payload, getUtmParams());
+        payload.source = SOURCE_LABEL;
+        payload.userAgent = navigator.userAgent || "";
+        payload.page = window.location.href;
+        payload.referrer = document.referrer || "";
+
+        // IMPORTANT: Apps Script suele ir mejor con text/plain para evitar preflight (CORS)
         const res = await fetch(WEB_APP_URL, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(payload)
         });
 
-        if(!res.ok) throw new Error("Request failed");
+        // Apps Script devuelve JSON {ok:true}
+        const json = await res.json().catch(() => ({}));
 
-        setMsg(true);
+        if(!res.ok || json.ok !== true){
+          throw new Error(json.error || "No OK");
+        }
+
+        showMsg(true);
         form.reset();
       }catch(err){
-        console.error(err);
-        setMsg(false);
+        console.error("Lead submit error:", err);
+        showMsg(false);
       }finally{
-        submitBtn.disabled = false;
+        setLoading(false);
       }
     });
   </script>
 </body>
 </html>
+
+
