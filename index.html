@@ -112,7 +112,7 @@
       color:#fff;
       background:
         linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.78)),
-        url('asset-img-hero.jpg');
+        url('assets/img/hero.jpg');
       background-size: cover;
       background-position: center;
     }
@@ -127,9 +127,10 @@
     .hero-inner{
       position:relative; z-index:2;
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
+      grid-template-columns: 1fr;
       gap: 22px;
       align-items: start;
+      padding-right: 420px; /* reserva espacio para la tarjeta flotante */
     }
     .hero-left{ padding: 12px 0; }
 
@@ -246,7 +247,7 @@
     }
     .microtrust strong{ color: var(--brand); }
 
-    /* Hero right card */
+    /* Hero right card (flotante en desktop) */
     .hero-card{
       background: rgba(255,255,255,.10);
       border: 1px solid rgba(255,255,255,.18);
@@ -257,6 +258,13 @@
       display:flex;
       flex-direction:column;
       gap: 12px;
+
+      position:absolute;
+      top: 110px;
+      right: 0;
+      width: 390px;
+      max-width: 92vw;
+      z-index: 3;
     }
     .hero-card h3{
       font-family:'Montserrat',sans-serif;
@@ -438,7 +446,7 @@
     .numbers{
       background:
         linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.84)),
-        url('asset-img-purpose.png');
+        url('assets/img/purpose.png');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -703,7 +711,8 @@
     /* Responsive */
     @media (max-width: 980px){
       .top-links{ display:none; }
-      .hero-inner{ grid-template-columns: 1fr; }
+
+      .hero-inner{ padding-right: 0; }
       .hero-bullets{ grid-template-columns: 1fr; }
       .steps-grid{ grid-template-columns: 1fr; }
       .purpose-content{ grid-template-columns: 1fr; }
@@ -713,6 +722,12 @@
       .floating-cta .mini-note{ display:none; }
       .lead-shell{ grid-template-columns: 1fr; }
       .lead-visual{ min-height: 260px; }
+
+      .hero-card{
+        position: static;
+        width: 100%;
+        max-width: 100%;
+      }
     }
   </style>
 </head>
@@ -721,7 +736,7 @@
   <!-- Header -->
   <header class="header">
     <div class="container">
-      <img src="asset/img/logo.png" alt="Sservitium Logo" class="logo" onerror="this.style.display='none';">
+      <img src="assets/img/logo.png" alt="Sservitium Logo" class="logo" onerror="this.style.display='none';">
       <nav class="top-links" aria-label="Navegación">
         <a href="#como-funciona">Cómo funciona</a>
         <a href="#comparativa">Comparativa</a>
@@ -835,7 +850,7 @@
 
       <div class="purpose-content">
         <div class="purpose-image">
-          <img src="asset/img/purpose.png" alt="Sservitium - Trabajo real y confianza" onerror="this.style.display='none';">
+          <img src="assets/img/purpose.png" alt="Sservitium - Trabajo real y confianza" onerror="this.style.display='none';">
         </div>
         <div class="purpose-copy">
           <h2>Una franquicia para profesionales que no se conforman</h2>
@@ -923,7 +938,7 @@
 
       <div class="lead-shell">
         <div class="lead-visual" aria-label="Imagen de trabajo real">
-          <img src="asset/img/form-side.png" alt="Comercial con cliente - Sservitium" onerror="this.style.display='none';">
+          <img src="assets/img/form-side.png" alt="Comercial con cliente - Sservitium" onerror="this.style.display='none';">
           <div class="lead-visual-copy">
             ✅ Enfoque <strong>B2B</strong> · Visitas · Propuestas · Seguimiento · Cierre
           </div>
@@ -1269,4 +1284,3 @@
   </script>
 </body>
 </html>
-
