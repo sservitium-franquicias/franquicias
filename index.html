@@ -114,7 +114,7 @@
         linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.78)),
         url('assets/img/hero.jpg');
       background-size: cover;
-      background-position: center;
+      background-position: 70% center; /* mueve el foco hacia la derecha */
     }
     .hero::before{
       content:'';
@@ -260,9 +260,10 @@
       gap: 12px;
 
       position:absolute;
-      top: 110px;
-      right: 0;
-      width: 390px;
+      top: auto;
+      bottom: 34px;
+      right: 18px;
+      width: 360px;
       max-width: 92vw;
       z-index: 3;
     }
@@ -1284,3 +1285,4 @@
   </script>
 </body>
 </html>
+
