@@ -127,10 +127,10 @@
     .hero-inner{
       position:relative; z-index:2;
       display:grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1.15fr .85fr;
       gap: 22px;
       align-items: start;
-      padding-right: 420px; /* reserva espacio para la tarjeta flotante */
+      padding-right: 0; /* reserva espacio para la tarjeta flotante */
     }
     .hero-left{ padding: 12px 0; }
 
@@ -249,8 +249,8 @@
 
     /* Hero right card (flotante en desktop) */
     .hero-card{
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.28); /* en vez de blanco */
+      border: 1px solid rgba(255,255,255,.16);
       border-radius: var(--radius2);
       padding: 18px;
       backdrop-filter: blur(10px);
@@ -261,10 +261,11 @@
 
       position:absolute;
       top: auto;
-      bottom: 34px;
+      bottom: 24px;
       right: 18px;
-      width: 360px;
+      width: 320px;
       max-width: 92vw;
+      padding: 14px;     /* más compacta */
       z-index: 3;
     }
     .hero-card h3{
@@ -1285,4 +1286,5 @@
   </script>
 </body>
 </html>
+
 
