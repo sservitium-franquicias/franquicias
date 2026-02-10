@@ -26,6 +26,8 @@
       /* Ajustes finos */
       --headerH: 82px;
       --heroFocusX: 62%; /* mueve el foco del hero (prueba 58–72% según foto) */
+      --heroCardW: 380px; /* ancho de la hero card (para no pisar la cara) */
+      --heroCardOffsetY: 70px; /* baja/sube la hero card */
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -117,7 +119,7 @@
       position:relative;
       color:#fff;
 
-      /* ✅ RUTAS CORRECTAS (según tu repo: franquicias/assets/img/...) */
+      /* RUTAS CORRECTAS */
       background:
         linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.55) 55%, rgba(0,0,0,.70) 100%),
         url('assets/img/hero.jpg');
@@ -135,18 +137,22 @@
     }
     @keyframes pulse{ 0%,100%{opacity:.30} 50%{opacity:.62} }
 
-   .hero-inner{
+    /* ✅ VOLVEMOS A GRID (esto arregla el “se ve mal”) */
+    .hero-inner{
       position: relative;
       z-index: 2;
-      display: block;                 /* fuera grid */
+      display: grid;
+      grid-template-columns: 1fr var(--heroCardW);
+      gap: 28px;
+      align-items: start;
       max-width: 1200px;
       margin: 0 auto;
     }
-   .hero-left{
-      max-width: 720px;               /* ancho legible */
+    .hero-left{
       padding: 12px 0;
-      padding-right: 520px;           /* reserva para la card */
-}
+      max-width: 720px;
+    }
+
     .kicker{
       display:flex; flex-wrap:wrap; gap:10px;
       margin-bottom: 12px;
@@ -260,7 +266,7 @@
     }
     .microtrust strong{ color: var(--brand); }
 
-    /* ✅ Hero right card: MÁS COMPACTA para no “pisar” la cara */
+    /* ✅ HERO CARD: baja y estrecha para no pisar la cara */
     .hero-card{
       background: rgba(0,0,0,.36);
       border: 1px solid rgba(255,255,255,.18);
@@ -271,9 +277,11 @@
       display:flex;
       flex-direction:column;
       gap: 12px;
-      max-width: 420px;
+
       justify-self: end;
-      margin-top: 8px;
+      margin-top: var(--heroCardOffsetY);
+      max-width: var(--heroCardW);
+      width: 100%;
     }
     .hero-card h3{
       font-family:'Montserrat',sans-serif;
@@ -646,6 +654,7 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* ✅ Mensajes: SIEMPRE ocultos por defecto (y se muestran solo por JS) */
     .form-msg{
       display:none;
       padding: 12px 14px;
@@ -663,6 +672,8 @@
       border: 1px solid rgba(180,56,46,.25);
       color: #7a1f18;
     }
+    .form-msg.show{ display:block; }
+
     .privacy-note{
       margin-top: 10px;
       color: #666;
@@ -724,10 +735,7 @@
     .footer-links a:hover{ color: var(--brand); }
 
     /* =========================
-       ✅ RESPONSIVE (MÓVIL)
-       - Evita imágenes “negras”
-       - Evita desplazamientos raros
-       - Hero card pasa debajo
+       RESPONSIVE
        ========================= */
 
     @media (max-width: 980px){
@@ -755,7 +763,7 @@
     @media (max-width: 640px){
       :root{
         --headerH: 72px;
-        --heroFocusX: 58%; /* en móvil suele ir mejor un poco más a la izquierda */
+        --heroFocusX: 58%;
       }
 
       .logo{ height:48px; }
@@ -764,8 +772,6 @@
       .hero{
         min-height: auto;
         padding-bottom: 26px;
-
-        /* En móvil, reduce “coste visual” y mejora legibilidad */
         background:
           linear-gradient(180deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.62) 55%, rgba(0,0,0,.78) 100%),
           url('assets/img/hero.jpg');
@@ -777,8 +783,7 @@
       .cta-primary, .cta-ghost{ width: 100%; justify-content:center; }
       .hero-ctas{ gap:10px; }
 
-      /* Las imágenes “negras” casi siempre eran por ruta o por altura fija.
-         En móvil, usa ratio y altura auto. */
+      /* Evita “negros” por alturas fijas en móvil */
       .purpose-image{
         height: auto;
         aspect-ratio: 16 / 10;
@@ -788,7 +793,7 @@
         aspect-ratio: 16 / 10;
       }
 
-      /* iOS/Android: background-attachment fixed suele romper -> lo quitamos */
+      /* iOS/Android: background-attachment fixed suele romper */
       .numbers{ background-attachment: scroll; }
     }
   </style>
@@ -798,7 +803,6 @@
   <!-- Header -->
   <header class="header">
     <div class="container">
-      <!-- ✅ Ruta correcta -->
       <img src="assets/img/logo.png" alt="Sservitium Logo" class="logo" onerror="this.style.display='none';">
       <nav class="top-links" aria-label="Navegación">
         <a href="#como-funciona">Cómo funciona</a>
@@ -913,7 +917,6 @@
 
       <div class="purpose-content">
         <div class="purpose-image">
-          <!-- ✅ Ruta correcta -->
           <img src="assets/img/purpose.png" alt="Sservitium - Trabajo real y confianza" onerror="this.style.display='none';">
         </div>
         <div class="purpose-copy">
@@ -1002,7 +1005,6 @@
 
       <div class="lead-shell">
         <div class="lead-visual" aria-label="Imagen de trabajo real">
-          <!-- ✅ Ruta correcta -->
           <img src="assets/img/form-side.png" alt="Comercial con cliente - Sservitium" onerror="this.style.display='none';">
           <div class="lead-visual-copy">
             ✅ Enfoque <strong>B2B</strong> · Visitas · Propuestas · Seguimiento · Cierre
@@ -1098,6 +1100,7 @@
               </button>
             </div>
 
+            <!-- ✅ NO se muestran nunca hasta que el JS les ponga .show -->
             <div id="msgOk" class="form-msg ok full">✅ ¡Solicitud recibida! Te contactaremos en breve (24–48h laborables).</div>
             <div id="msgErr" class="form-msg err full">⚠️ Revisa los campos obligatorios e inténtalo de nuevo.</div>
 
@@ -1224,8 +1227,7 @@
 
   <script>
     // =========================
-    // ✅ CONFIG: Google Apps Script Web App (PRODUCCIÓN)
-    // (Sí: está metida la configuración del Apps Script aquí)
+    // CONFIG: Google Apps Script Web App
     // =========================
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzS2ngHe7TivBUGolLASR0fFhaOx1yyReaSJron7ggzuhkQjXaYaZ5G195OxdFP3ZAO/exec";
     const SOURCE_LABEL = "Landing Franquicias PRO";
@@ -1249,11 +1251,16 @@
       };
     }
 
+    const msgOk = document.getElementById("msgOk");
+    const msgErr = document.getElementById("msgErr");
+
+    function hideMsgs(){
+      msgOk.classList.remove("show");
+      msgErr.classList.remove("show");
+    }
     function showMsg(ok){
-      const msgOk = document.getElementById("msgOk");
-      const msgErr = document.getElementById("msgErr");
-      msgOk.style.display = ok ? "block" : "none";
-      msgErr.style.display = ok ? "none" : "block";
+      hideMsgs();
+      (ok ? msgOk : msgErr).classList.add("show");
     }
 
     function setLoading(isLoading){
@@ -1301,10 +1308,12 @@
     // Form submit
     const form = document.getElementById("leadForm");
 
+    // Asegura que NO se vean mensajes al cargar (aunque haya CSS externo raro)
+    hideMsgs();
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      document.getElementById("msgOk").style.display = "none";
-      document.getElementById("msgErr").style.display = "none";
+      hideMsgs();
 
       if(!form.checkValidity()){
         form.reportValidity();
@@ -1347,7 +1356,3 @@
   </script>
 </body>
 </html>
-
-
-
-
