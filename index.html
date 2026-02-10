@@ -114,7 +114,7 @@
         linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.78)),
         url('assets/img/hero.jpg');
       background-size: cover;
-      background-position: 78% center; /* mueve el foco hacia la derecha */
+      background-position: 82% center;
     }
     .hero::before{
       content:'';
@@ -130,7 +130,6 @@
       grid-template-columns: 1.15fr .85fr;
       gap: 22px;
       align-items: start;
-      padding-right: 0; /* reserva espacio para la tarjeta flotante */
     }
     .hero-left{ padding: 12px 0; }
 
@@ -247,26 +246,18 @@
     }
     .microtrust strong{ color: var(--brand); }
 
-    /* Hero right card (flotante en desktop) */
+    /* Hero right card */
     .hero-card{
-      background: rgba(0,0,0,.28); /* en vez de blanco */
-      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.14);
       border-radius: var(--radius2);
       padding: 18px;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(8px);
       box-shadow: 0 18px 45px rgba(0,0,0,.20);
       display:flex;
       flex-direction:column;
       gap: 12px;
-
-      position:absolute;
-      top: auto;
-      bottom: 24px;
-      right: 18px;
-      width: 320px;
-      max-width: 92vw;
-      padding: 14px;     /* más compacta */
-      z-index: 3;
+      position:relative;
     }
     .hero-card h3{
       font-family:'Montserrat',sans-serif;
@@ -448,7 +439,7 @@
     .numbers{
       background:
         linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.84)),
-        url('assets/img/purpose.png');
+        url('asset-img-purpose.png');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -710,11 +701,10 @@
     .footer-links a{ color:#ccc; text-decoration:none; margin: 0 12px; font-weight:700; }
     .footer-links a:hover{ color: var(--brand); }
 
-    /* Responsive */
+    /* Responsive (tu bloque existente) */
     @media (max-width: 980px){
       .top-links{ display:none; }
-
-      .hero-inner{ padding-right: 0; }
+      .hero-inner{ grid-template-columns: 1fr; }
       .hero-bullets{ grid-template-columns: 1fr; }
       .steps-grid{ grid-template-columns: 1fr; }
       .purpose-content{ grid-template-columns: 1fr; }
@@ -724,11 +714,60 @@
       .floating-cta .mini-note{ display:none; }
       .lead-shell{ grid-template-columns: 1fr; }
       .lead-visual{ min-height: 260px; }
+    }
 
-      .hero-card{
-        position: static;
+    /* =======================================================
+       ✅ AÑADIDO: Mobile-first para mejorar HERO (≤ 768px)
+       ======================================================= */
+    @media (max-width: 768px){
+
+      /* Hero: menos alto, más aire */
+      .hero{
+        min-height: auto;
+        padding-top: 96px;
+        padding-bottom: 40px;
+        background-position: 85% top;
+      }
+
+      /* Titular y textos: más legibles */
+      h1{
+        font-size: 2.05rem;
+        line-height: 1.15;
+        letter-spacing: -0.4px;
+      }
+      .subtitle{
+        font-size: 1.1rem;
+      }
+      .hero-sub{
+        font-size: 15px;
+      }
+
+      /* CTA: mejor anchura para móvil */
+      .hero-ctas{
+        gap: 10px;
+      }
+      .cta-primary,
+      .cta-ghost{
         width: 100%;
-        max-width: 100%;
+        justify-content: center;
+      }
+
+      /* Bullets: 1 columna */
+      .hero-bullets{
+        grid-template-columns: 1fr;
+      }
+
+      /* La tarjeta NO flota en móvil (evita tapar imagen) */
+      .hero-card{
+        position: static !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin-top: 16px;
+      }
+
+      /* Evita CTA duplicado: ocultamos floating CTA en móvil */
+      .floating-cta{
+        display:none;
       }
     }
   </style>
@@ -738,7 +777,7 @@
   <!-- Header -->
   <header class="header">
     <div class="container">
-      <img src="assets/img/logo.png" alt="Sservitium Logo" class="logo" onerror="this.style.display='none';">
+      <img src="asset/img/logo.png" alt="Sservitium Logo" class="logo" onerror="this.style.display='none';">
       <nav class="top-links" aria-label="Navegación">
         <a href="#como-funciona">Cómo funciona</a>
         <a href="#comparativa">Comparativa</a>
@@ -852,7 +891,7 @@
 
       <div class="purpose-content">
         <div class="purpose-image">
-          <img src="assets/img/purpose.png" alt="Sservitium - Trabajo real y confianza" onerror="this.style.display='none';">
+          <img src="asset/img/purpose.png" alt="Sservitium - Trabajo real y confianza" onerror="this.style.display='none';">
         </div>
         <div class="purpose-copy">
           <h2>Una franquicia para profesionales que no se conforman</h2>
@@ -940,7 +979,7 @@
 
       <div class="lead-shell">
         <div class="lead-visual" aria-label="Imagen de trabajo real">
-          <img src="assets/img/form-side.png" alt="Comercial con cliente - Sservitium" onerror="this.style.display='none';">
+          <img src="asset/img/form-side.png" alt="Comercial con cliente - Sservitium" onerror="this.style.display='none';">
           <div class="lead-visual-copy">
             ✅ Enfoque <strong>B2B</strong> · Visitas · Propuestas · Seguimiento · Cierre
           </div>
@@ -1286,6 +1325,3 @@
   </script>
 </body>
 </html>
-
-
-
