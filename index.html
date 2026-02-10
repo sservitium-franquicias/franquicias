@@ -22,6 +22,10 @@
       --shadow2: 0 18px 55px rgba(0,0,0,.18);
       --radius: 16px;
       --radius2: 22px;
+
+      /* Ajustes finos */
+      --headerH: 82px;
+      --heroFocusX: 62%; /* mueve el foco del hero (prueba 58–72% según foto) */
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -42,13 +46,14 @@
       background: rgba(0,0,0,.92);
       backdrop-filter: blur(10px);
       z-index:1000;
-      padding: 12px 0;
+      padding: 10px 0;
       box-shadow: 0 2px 14px rgba(0,0,0,.30);
     }
     .header .container{
       display:flex; align-items:center; justify-content:space-between; gap:14px;
+      min-height: calc(var(--headerH) - 20px);
     }
-    .logo{ height:58px; width:auto; }
+    .logo{ height:54px; width:auto; }
     .top-links{
       display:flex; gap:16px; align-items:center;
       font-size:14px; color: rgba(255,255,255,.80);
@@ -63,6 +68,7 @@
       border-radius: 999px;
       font-weight: 900;
       box-shadow: 0 10px 25px rgba(0,180,200,.25);
+      white-space: nowrap;
     }
 
     /* Floating CTA */
@@ -104,23 +110,28 @@
     /* Hero */
     .hero{
       min-height: 100vh;
-      padding-top: 92px;
+      padding-top: calc(var(--headerH) + 14px);
       padding-bottom: 54px;
       display:flex;
       align-items:center;
       position:relative;
       color:#fff;
+
+      /* ✅ RUTAS CORRECTAS (según tu repo: franquicias/assets/img/...) */
       background:
-        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.78)),
+        linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.55) 55%, rgba(0,0,0,.70) 100%),
         url('assets/img/hero.jpg');
+
       background-size: cover;
-      background-position: 82% center;
+      background-position: var(--heroFocusX) center;
+      background-repeat: no-repeat;
     }
     .hero::before{
       content:'';
       position:absolute; inset:0;
       background: radial-gradient(circle at 22% 50%, rgba(0,180,200,.22), transparent 55%);
       animation: pulse 3.2s ease-in-out infinite;
+      pointer-events:none;
     }
     @keyframes pulse{ 0%,100%{opacity:.30} 50%{opacity:.62} }
 
@@ -246,18 +257,20 @@
     }
     .microtrust strong{ color: var(--brand); }
 
-    /* Hero right card */
+    /* ✅ Hero right card: MÁS COMPACTA para no “pisar” la cara */
     .hero-card{
-      background: rgba(0,0,0,.22);
-      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.36);
+      border: 1px solid rgba(255,255,255,.18);
       border-radius: var(--radius2);
       padding: 18px;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
       box-shadow: 0 18px 45px rgba(0,0,0,.20);
       display:flex;
       flex-direction:column;
       gap: 12px;
-      position:relative;
+      max-width: 420px;
+      justify-self: end;
+      margin-top: 8px;
     }
     .hero-card h3{
       font-family:'Montserrat',sans-serif;
@@ -371,12 +384,19 @@
       position:relative;
       background:#000;
     }
-    .purpose-image img{ width:100%; height:100%; object-fit:cover; object-position:center; opacity:.95; }
+    .purpose-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      opacity:.95;
+    }
     .purpose-image::before{
       content:'';
       position:absolute; inset:0;
       background: linear-gradient(45deg, rgba(0,180,200,.14) 0%, transparent 55%);
       opacity:.9;
+      pointer-events:none;
     }
     .purpose-copy h2{
       font-family:'Montserrat',sans-serif;
@@ -439,7 +459,7 @@
     .numbers{
       background:
         linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.84)),
-        url('asset-img-purpose.png');
+        url('assets/img/purpose.png');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -513,6 +533,7 @@
       content:'';
       position:absolute; inset:0;
       background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.45));
+      pointer-events:none;
     }
     .lead-visual .lead-visual-copy{
       position:absolute; left:18px; right:18px; bottom:16px;
@@ -701,11 +722,25 @@
     .footer-links a{ color:#ccc; text-decoration:none; margin: 0 12px; font-weight:700; }
     .footer-links a:hover{ color: var(--brand); }
 
-    /* Responsive (tu bloque existente) */
+    /* =========================
+       ✅ RESPONSIVE (MÓVIL)
+       - Evita imágenes “negras”
+       - Evita desplazamientos raros
+       - Hero card pasa debajo
+       ========================= */
+
     @media (max-width: 980px){
       .top-links{ display:none; }
       .hero-inner{ grid-template-columns: 1fr; }
       .hero-bullets{ grid-template-columns: 1fr; }
+
+      /* Card debajo del contenido (no pisa el foco de la imagen) */
+      .hero-card{
+        max-width: 100%;
+        justify-self: stretch;
+        margin-top: 14px;
+      }
+
       .steps-grid{ grid-template-columns: 1fr; }
       .purpose-content{ grid-template-columns: 1fr; }
       .compare-grid{ grid-template-columns: 1fr; }
@@ -716,59 +751,44 @@
       .lead-visual{ min-height: 260px; }
     }
 
-    /* =======================================================
-       ✅ AÑADIDO: Mobile-first para mejorar HERO (≤ 768px)
-       ======================================================= */
-    @media (max-width: 768px){
+    @media (max-width: 640px){
+      :root{
+        --headerH: 72px;
+        --heroFocusX: 58%; /* en móvil suele ir mejor un poco más a la izquierda */
+      }
 
-      /* Hero: menos alto, más aire */
+      .logo{ height:48px; }
+      .top-cta{ padding: 10px 12px; font-size: 13px; }
+
       .hero{
         min-height: auto;
-        padding-top: 96px;
-        padding-bottom: 40px;
-        background-position: 85% top;
+        padding-bottom: 26px;
+
+        /* En móvil, reduce “coste visual” y mejora legibilidad */
+        background:
+          linear-gradient(180deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.62) 55%, rgba(0,0,0,.78) 100%),
+          url('assets/img/hero.jpg');
+        background-size: cover;
+        background-position: var(--heroFocusX) center;
       }
 
-      /* Titular y textos: más legibles */
-      h1{
-        font-size: 2.05rem;
-        line-height: 1.15;
-        letter-spacing: -0.4px;
+      .hero-bullet{ font-size: 13.5px; }
+      .cta-primary, .cta-ghost{ width: 100%; justify-content:center; }
+      .hero-ctas{ gap:10px; }
+
+      /* Las imágenes “negras” casi siempre eran por ruta o por altura fija.
+         En móvil, usa ratio y altura auto. */
+      .purpose-image{
+        height: auto;
+        aspect-ratio: 16 / 10;
       }
-      .subtitle{
-        font-size: 1.1rem;
-      }
-      .hero-sub{
-        font-size: 15px;
+      .lead-visual{
+        min-height: auto;
+        aspect-ratio: 16 / 10;
       }
 
-      /* CTA: mejor anchura para móvil */
-      .hero-ctas{
-        gap: 10px;
-      }
-      .cta-primary,
-      .cta-ghost{
-        width: 100%;
-        justify-content: center;
-      }
-
-      /* Bullets: 1 columna */
-      .hero-bullets{
-        grid-template-columns: 1fr;
-      }
-
-      /* La tarjeta NO flota en móvil (evita tapar imagen) */
-      .hero-card{
-        position: static !important;
-        width: 100% !important;
-        max-width: none !important;
-        margin-top: 16px;
-      }
-
-      /* Evita CTA duplicado: ocultamos floating CTA en móvil */
-      .floating-cta{
-        display:none;
-      }
+      /* iOS/Android: background-attachment fixed suele romper -> lo quitamos */
+      .numbers{ background-attachment: scroll; }
     }
   </style>
 </head>
@@ -777,7 +797,8 @@
   <!-- Header -->
   <header class="header">
     <div class="container">
-      <img src="asset/img/logo.png" alt="Sservitium Logo" class="logo" onerror="this.style.display='none';">
+      <!-- ✅ Ruta correcta -->
+      <img src="assets/img/logo.png" alt="Sservitium Logo" class="logo" onerror="this.style.display='none';">
       <nav class="top-links" aria-label="Navegación">
         <a href="#como-funciona">Cómo funciona</a>
         <a href="#comparativa">Comparativa</a>
@@ -891,7 +912,8 @@
 
       <div class="purpose-content">
         <div class="purpose-image">
-          <img src="asset/img/purpose.png" alt="Sservitium - Trabajo real y confianza" onerror="this.style.display='none';">
+          <!-- ✅ Ruta correcta -->
+          <img src="assets/img/purpose.png" alt="Sservitium - Trabajo real y confianza" onerror="this.style.display='none';">
         </div>
         <div class="purpose-copy">
           <h2>Una franquicia para profesionales que no se conforman</h2>
@@ -979,7 +1001,8 @@
 
       <div class="lead-shell">
         <div class="lead-visual" aria-label="Imagen de trabajo real">
-          <img src="asset/img/form-side.png" alt="Comercial con cliente - Sservitium" onerror="this.style.display='none';">
+          <!-- ✅ Ruta correcta -->
+          <img src="assets/img/form-side.png" alt="Comercial con cliente - Sservitium" onerror="this.style.display='none';">
           <div class="lead-visual-copy">
             ✅ Enfoque <strong>B2B</strong> · Visitas · Propuestas · Seguimiento · Cierre
           </div>
@@ -1200,7 +1223,8 @@
 
   <script>
     // =========================
-    // CONFIG: Google Apps Script Web App (PRODUCCIÓN)
+    // ✅ CONFIG: Google Apps Script Web App (PRODUCCIÓN)
+    // (Sí: está metida la configuración del Apps Script aquí)
     // =========================
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzS2ngHe7TivBUGolLASR0fFhaOx1yyReaSJron7ggzuhkQjXaYaZ5G195OxdFP3ZAO/exec";
     const SOURCE_LABEL = "Landing Franquicias PRO";
@@ -1278,7 +1302,6 @@
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      // ocultamos mensajes previos
       document.getElementById("msgOk").style.display = "none";
       document.getElementById("msgErr").style.display = "none";
 
@@ -1294,14 +1317,12 @@
         const formData = new FormData(form);
         const payload = Object.fromEntries(formData.entries());
 
-        // Tracking / contexto
         Object.assign(payload, getUtmParams());
         payload.source = SOURCE_LABEL;
         payload.userAgent = navigator.userAgent || "";
         payload.page = window.location.href;
         payload.referrer = document.referrer || "";
 
-        // IMPORTANTE: Apps Script suele ir mejor con text/plain para evitar preflight CORS
         const res = await fetch(WEB_APP_URL, {
           method: "POST",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
