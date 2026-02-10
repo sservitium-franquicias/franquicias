@@ -135,15 +135,18 @@
     }
     @keyframes pulse{ 0%,100%{opacity:.30} 50%{opacity:.62} }
 
-    .hero-inner{
-      position:relative; z-index:2;
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 22px;
-      align-items: start;
+   .hero-inner{
+      position: relative;
+      z-index: 2;
+      display: block;                 /* fuera grid */
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .hero-left{ padding: 12px 0; }
-
+   .hero-left{
+      max-width: 720px;               /* ancho legible */
+      padding: 12px 0;
+      padding-right: 520px;           /* reserva para la card */
+}
     .kicker{
       display:flex; flex-wrap:wrap; gap:10px;
       margin-bottom: 12px;
@@ -271,6 +274,13 @@
       max-width: 420px;
       justify-self: end;
       margin-top: 8px;
+    }
+    /* 🔧 AJUSTE DE POSICIÓN – bajar hero-card sin romper nada */
+  .hero-card{
+      top: auto !important;
+      bottom: 26px !important;   /* baja la card */
+      right: 34px !important;    /* la empuja a la derecha */
+      max-width: 330px !important; /* más estrecha, menos invasiva */
     }
     .hero-card h3{
       font-family:'Montserrat',sans-serif;
@@ -1344,4 +1354,5 @@
   </script>
 </body>
 </html>
+
 
